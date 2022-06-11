@@ -33,7 +33,7 @@ pipeline
              def scannerHome = tool 'sonarqube';
                 withSonarQubeEnv()
                  {
-      bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=App1}
+      bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=App1" }
   
          }
                  }
