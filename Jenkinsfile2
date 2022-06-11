@@ -1,45 +1,18 @@
-pipeline 
-{
-    agent any
-
-    stages 
+node {
+  stage('SCM')
+  {
+    checkout scm
+  }
+  stage('SonarQube Analysis')
+  {
+    def scannerHome = tool 'sonarqube';
+    withSonarQubeEnv() 
     {
-        stage('Build') 
-        {
-            steps 
-            {
-                echo 'Build App'
-            }
-        }
-
-        stage('Test') 
-        {
-            steps 
-            {
-                echo 'Test App'
-            }
-        }
-
-        stage('Deploy') 
-        {
-            steps 
-            {
-                echo 'Deploy App'
-            }
-        }
-        
-         stage('SonarQube Analysis')
-         {
-            steps
-            {
-             def scannerHome = tool 'sonarqube';
-                withSonarQubeEnv()
-                 {
-      bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=App1"
-                  }
-             }
-  
-         }
-                 }
- }
- 
+      bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=testapp2"
+    }
+  }
+  stage("Build Result")
+  {
+    echo "Build Successful"
+    }
+}
