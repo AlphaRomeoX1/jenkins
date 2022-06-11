@@ -34,3 +34,4 @@ pipeline
       bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=App1"
     }
     }
+    }
