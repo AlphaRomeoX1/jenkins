@@ -8,7 +8,7 @@ node {
     def scannerHome = tool 'sonarqube';
     withSonarQubeEnv() 
     {
-      bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=testapp2"
+      bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=TESTAPP2"
     }
   }
   stage("Build Result")
